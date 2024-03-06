@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Asgmt2.FlightsPage">
+
+    <ScrollView>
+        <Grid ColumnSpacing="20"
+              RowSpacing="20">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label x:Name="flightFinderText"
+                Text="Flight Finder"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+
+            <Picker x:Name="fromDropDown"
+                Title="From:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        <!--this has to be relative to the csv file-->
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>1</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+            </Picker>
+
+            <Picker x:Name="toDropDown"
+                Title="To:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        <!--this has to be relative to the csv file-->
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>1</Grid.Row>
+                <Grid.Column>1</Grid.Column>
+            </Picker>
+
+            <Picker x:Name="dayDropDown"
+                Title="Day:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        <!--this has to be relative to the csv file-->
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>1</Grid.Row>
+                <Grid.Column>2</Grid.Column>
+            </Picker>
+
+            <Button x:Name="findFlightsButton"
+                Text="Find flights"
+                BackgroundColor="Blue"
+                TextColor="White"
+                Grid.Row="1"
+                Grid.Column="3"
+                Grid.ColumnSpan="4"
+                Clicked="OnFindFlights"/>
+
+            <Label x:Name="flightsText"
+                Text="Flights"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+
+            <Picker x:Name="flightsDropDown">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Loading...</x:String>
+                        <!--this has to be relative to the inputs from the earlier drop downs-->
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>3</Grid.Row>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>
+            <Label
+                x:Name="errorText"
+                Text=""
+                TextColor="Red"
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"></Label>
+            <Label x:Name="reserveText"
+                Text="Reserve"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+
+
+            <Frame
+                BorderColor="LightGrey"
+                BackgroundColor="Transparent"
+                Padding="5"
+                CornerRadius="5 "
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+                <Label x:Name="flightCodeDropDown"  
+                       Text="Flight code : "
+                       >
+                </Label>
+            </Frame>
+
+            <Frame
+                BorderColor="LightGrey"
+                BackgroundColor="Transparent"
+                Padding="5"
+                CornerRadius="5 "
+                Grid.Row="7"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+                <Label x:Name="airlineCodeDropDown"  
+                       Text="Airline : "
+                       >
+                </Label>
+            </Frame>
+
+            <Frame
+                BorderColor="LightGrey"
+                BackgroundColor="Transparent"
+                Padding="5"
+                CornerRadius="5 "
+                Grid.Row="8"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+                <Label x:Name="dayCodeDropDown"  
+                       Text="Day : "
+                       >
+                </Label>
+            </Frame>
+
+            <Frame
+                BorderColor="LightGrey"
+                BackgroundColor="Transparent"
+                Padding="5"
+                CornerRadius="5 "
+                Grid.Row="9"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+                <Label x:Name="timeCodeDropDown"  
+                       Text="Time: "
+                       >
+                </Label>
+            </Frame>
+
+
+            <Frame
+                BorderColor="LightGrey"
+                BackgroundColor="Transparent"
+                Padding="5"
+                CornerRadius="5"
+                Grid.Row="10"
+                Grid.Column="0"
+                Grid.ColumnSpan="4">
+                <Label x:Name="costCodeDropDown"  
+                       Text="Cost : "
+                       >
+                </Label>
+            </Frame>
+            <!--<Picker x:Name="flightCodeDropDown"
+                Title="Flight code:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        --><!--this has to be relative to the inputs from the earlier drop downs--><!--
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>6</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>-->
+            <!--<Picker x:Name="airlineDropDown"
+                Title="Airline:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        --><!--this has to be relative to the inputs from the earlier drop downs--><!--
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>7</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>
+            <Picker x:Name="dayreserveDropDown"
+                Title="Day:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        --><!--this has to be relative to the inputs from the earlier drop downs--><!--
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>8</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>
+            <Picker x:Name="timeDropDown"
+                Title="Time:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        --><!--this has to be relative to the inputs from the earlier drop downs--><!--
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>9</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>
+            <Picker x:Name="costDropDown"
+                Title="Cost:">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Any</x:String>
+                        --><!--this has to be relative to the inputs from the earlier drop downs--><!--
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>10</Grid.Row>
+                <Grid.Column>0</Grid.Column>
+                <Grid.ColumnSpan>4</Grid.ColumnSpan>
+            </Picker>-->
+
+            <Label x:Name="flightsNameText"
+                Text="Name:"
+                FontSize="Body"
+                TextColor="LightGray"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Grid.Row="11"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+            <Entry x:Name="nameInput"
+                   Text=""
+                Placeholder="Name"
+                Grid.Row="12"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+
+            <Label x:Name="citizenshipText"
+                Text="Citizenship:"
+                FontSize="Body"
+                TextColor="LightGray"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Grid.Row="13"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+            <Entry x:Name="citizenshipInput"
+                   Text=""
+                Placeholder="Citizenship"
+                Grid.Row="14"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"/>
+
+
+            <Button x:Name="MakeReservationButton"
+                Text="Reserve"
+                BackgroundColor="Blue"
+                TextColor="White"
+                Grid.Row="15"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                 Clicked="makeReservationButton"
+                />
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Asgmt2.MainPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="welcomeToTravelessText"
+                Text="Welcome to Traveless"
+                FontSize="Header"
+                Grid.Row="0"
+                Grid.Column="0"/>
+            <Label x:Name="welcomeflavorText"
+                Text="Welcome to our new app."
+                FontSize="Subtitle"
+                Grid.Row="1"/>
+            
+            <Label x:Name="searchText"
+                Text="Search"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Grid.Row="2"/>
+            
+            <Label x:Name="codeText"
+                Text="Code:"
+                FontSize="Body"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Grid.Row="3"/>
+            <Entry x:Name="codeSearch"
+                Placeholder="LL-DDDD"
+                HorizontalOptions="Start"
+                Grid.Row="4"/>
+            
+            <Label x:Name="airlineText"
+                Text="Airline:"
+                FontSize="Body"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Grid.Row="5"/>
+            <Entry x:Name="airlineSearch"
+                Placeholder="Airline"
+                HorizontalOptions="Start"
+                Grid.Row="6"/>
+
+            <Label x:Name="mainNameText"
+                Text="Name:"
+                FontSize="Body"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Grid.Row="7"/>
+            <Entry x:Name="nameSearch"
+                Placeholder="Name"
+                HorizontalOptions="Start"
+                Grid.Row="8"/>
+            <Button x:Name="findReservationsButton"
+                    Text="Find reservations"
+                    HorizontalOptions="Center"
+                    Grid.Row="9"
+                    Clicked="OnFindReservation"/>
+
+            <Label x:Name="mainReservationsText"
+                Text="Reservations"
+                FontSize="Title"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Grid.Row="10"/>
+
+            <Picker x:Name="reservationsDropDown">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Please select a reservation</x:String>
+                        <!--this has to be relative to the inputs from the OTHER .xaml file, as that is dependant on the csv files-->
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Grid.Row>11</Grid.Row>
+            </Picker>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
